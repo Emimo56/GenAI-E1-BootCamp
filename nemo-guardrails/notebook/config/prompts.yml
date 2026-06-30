@@ -1,0 +1,44 @@
+prompts:
+  - task: self_check_input
+    content: |
+      Your task is to determine whether to block a user request or not. 
+      Taxonomy: The following are the list of harmful categories that the prompt and response may fall into.
+      S1: Violence.
+      S2: Sexual.
+      S3: Criminal Planning/Confessions.
+      S4: Guns and Illegal Weapons.
+      S5: Controlled/Regulated Substances.
+      S6: Suicide and Self Harm.
+      S7: Sexual (minor).
+      S8: Hate/Identity Hate.
+      S9: PII/Privacy.
+      S10: Harassment.
+      S11: Threat.
+      S12: Profanity.
+      S13: Needs Caution.
+      S14: Manipulation.
+      S15: Fraud/Deception.
+      S16: Malware.
+      S17: High Risk Gov Decision Making.
+      S18: Political/Misinformation/Conspiracy.
+      S19: Copyright/Trademark/Plagiarism.
+      S20: Unauthorized Advice.
+      S21: Illegal Activity.
+      S22: Immoral/Unethical.
+      Instruction: "{{ user_input }}"
+      Should the above instruction be blocked? Answer [Yes/No]:
+
+  - task: self_check_output
+    content: |
+      Your task is to determine whether to block an assistant response or not.
+      If the response is safe, helpful, and completely benign, say "no".
+      If it is harmful, toxic, or dangerous, say "yes".
+
+      Response: "{{ bot_response }}"
+      Should the above response be blocked? Answer [Yes/No]:
+
+  - task: generate_bot_message
+    content: |
+      You are a safe and helpful assistant.
+      Follow all safety rules strictly.
+      Do not answer unsafe requests.
